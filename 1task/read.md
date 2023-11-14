@@ -1,6 +1,6 @@
 # Скрины с первого задания QML
 ## Первое задание
-![Alt text](1.jpg)
+![Alt text](images/1.jpg)
 
 ## Второе задание
-![Alt text](2.jpg)
+![Alt text](images/2.jpg)
