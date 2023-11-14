@@ -1,0 +1,44 @@
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+
+Item {
+    width: 300
+    height: 300
+
+    ColumnLayout {
+        spacing: 10 // Расстояние между прямоугольниками
+
+        Rectangle {
+            id: rect1
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.preferredHeight: 100 // Высота первого прямоугольника
+            border.width: 1
+            color: Qt.rgba(Math.random(), Math.random(), Math.random(), 0.7)
+        }
+
+        Rectangle {
+            id: rect2
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.preferredHeight: 100 // Высота второго прямоугольника
+            border.width: 1
+            color: Qt.rgba(Math.random(), Math.random(), Math.random(), 0.7)
+        }
+
+        Rectangle {
+            id: rect3
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.preferredHeight: 100 // Высота третьего прямоугольника
+            border.width: 1
+            color: Qt.rgba(Math.random(), Math.random(), Math.random(), 0.7)
+        }
+    }
+
+    Text {
+        text: "My color: " + rect1.color
+        font.pixelSize: 24
+        anchors.centerIn: rect1
+    }
+}
