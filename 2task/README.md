@@ -1,5 +1,5 @@
 # Скрины со второго задания QML
 ## Вертикальная ориентация
-![Alt text](vert.jpg)
+![Alt text](images/vert.jpg)
 ## Горизонтальная ориентация
-![Alt text](horiz.jpg)
+![Alt text](images/horiz.jpg)
