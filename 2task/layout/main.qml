@@ -26,7 +26,7 @@ ApplicationWindow {
         // Content and Footer Container
         Item {
             width: parent.width
-            height: parent.height - 50 - 3  // Устанавливаем высоту блока Content и Footer
+            height: parent.height - 50 - 3  
 
             // Content
             Rectangle {
