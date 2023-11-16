@@ -1,13 +1,13 @@
 # Взаимодействие с пользователем 
 
 ## Основной контент
-![Alt text](main.png)
+![Alt text](images/main.png)
 ## content 1 
-![Alt text](1.png)
+![Alt text](images/1.png)
 ## content 2 
-![Alt text](2.png)
+![Alt text](images/2.png)
 ## content 3 
-![Alt text](3.png)
+![Alt text](images/3.png)
 
 
 
