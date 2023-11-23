@@ -13,23 +13,18 @@ ApplicationWindow {
         height: parent.height
         color: "lightgrey"
 
-        MouseArea{
-        anchors.fill:parent
-        onClicked: {
-        if (parent.state ==="stop") {
-        parent.state = "caution";
-        } else if (parent.state === "caution") {
-        parent.state = "go";
-        } else {
-        parent.state = "stop";
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                if (parent.state === "stop") {
+                    parent.state = "caution";
+                } else if (parent.state === "caution") {
+                    parent.state = "go";
+                } else {
+                    parent.state = "stop";
+                }
+            }
         }
-        }
-        }
-
-
-
-
-
 
         Column {
             anchors.centerIn: parent
@@ -44,10 +39,10 @@ ApplicationWindow {
                 border.width: 1
 
                 Behavior on color {
-                                   ColorAnimation {
-                                       duration: 1000
-                                   }
-                               }
+                    ColorAnimation {
+                        duration: 500
+                    }
+                }
             }
 
             Rectangle {
@@ -59,10 +54,10 @@ ApplicationWindow {
                 border.width: 1
 
                 Behavior on color {
-                                   ColorAnimation {
-                                       duration: 1000
-                                   }
-                               }
+                    ColorAnimation {
+                        duration: 500
+                    }
+                }
             }
 
             Rectangle {
@@ -74,48 +69,57 @@ ApplicationWindow {
                 border.width: 1
 
                 Behavior on color {
-                                   ColorAnimation {
-                                       duration: 1000
-                                   }
-                               }
+                    ColorAnimation {
+                        duration: 500
+                    }
+                }
             }
         }
 
-        states:[
-        State {
-        name: "stop"
-        PropertyChanges {target: rect_red; color: "red"}
-        PropertyChanges {target:rect_yellow; color: "gray"}
-        PropertyChanges {target:rect_green; color: "gray"}
-        },
-        State {
-        name: "caution"
-        PropertyChanges {target: rect_red; color: "gray" }
-        PropertyChanges {target:rect_yellow; color: "yellow"}
-        PropertyChanges {target:rect_green; color: "gray"}
-        },
-        State {
-        name: "go"
-        PropertyChanges {target: rect_red; color: "gray"}
-        PropertyChanges {target:rect_yellow; color: "gray"}
-        PropertyChanges {target:rect_green; color: "green"}
-        } ]
-
-
-        transitions:[
-        Transition {
-        from: "stop"
-        to: "caution"},
-        Transition {
-        from: "caution"
-        to: "go"},
-        Transition {
-        from: "go"
-        to: "stop"}
+        states: [
+            State {
+                name: "stop"
+                PropertyChanges { target: rect_red; color: "red" }
+                PropertyChanges { target: rect_yellow; color: "gray" }
+                PropertyChanges { target: rect_green; color: "gray" }
+            },
+            State {
+                name: "caution"
+                PropertyChanges { target: rect_red; color: "gray" }
+                PropertyChanges { target: rect_yellow; color: "yellow" }
+                PropertyChanges { target: rect_green; color: "gray" }
+            },
+            State {
+                name: "go"
+                PropertyChanges { target: rect_red; color: "gray" }
+                PropertyChanges { target: rect_yellow; color: "gray" }
+                PropertyChanges { target: rect_green; color: "green" }
+            }
         ]
-        state:"stop"
 
+        transitions: [
+            Transition {
+                from: "stop"
+                to: "caution"
+                ColorAnimation {
+                    duration: 500
+                }
+            },
+            Transition {
+                from: "caution"
+                to: "go"
+                ColorAnimation {
+                    duration: 500
+                }
+            },
+            Transition {
+                from: "go"
+                to: "stop"
+                ColorAnimation {
+                    duration: 500
+                }
+            }
+        ]
+        state: "stop"
     }
-
-
 }
