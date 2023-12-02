@@ -8,10 +8,12 @@ ApplicationWindow {
     height: 600
     title: "Page Switching Example"
 
-    Rectangle {
-        width: parent.width
-        height: 50
-        color: "lightblue"
+    // Header
+    header: ToolBar {
+        id: page_header
+
+        height: 40
+
 
         Row {
             spacing: 10
@@ -21,22 +23,30 @@ ApplicationWindow {
                 text: "Back"
                 visible: stackView.depth > 1
                 onClicked: stackView.pop()
+
+
             }
 
             Label {
+                id: header_page_text
+
                 text: stackView.currentItem ? stackView.currentItem.itemName : "Home"
+                anchors.centerIn: verticalCenter
             }
         }
     }
 
+    // StackView
     StackView {
         id: stackView
         initialItem: redPage
         anchors.fill: parent
 
         onCurrentItemChanged: {
-
+            console.log("StackView Depth:", stackView.depth);
             backButton.visible = stackView.depth > 1;
+            console.log("Back Button Visibility:", backButton.visible);
+            header_page_text.text = stackView.currentItem ? stackView.currentItem.itemName : "Home";
         }
 
         // Страница красного цвета
@@ -45,7 +55,6 @@ ApplicationWindow {
             Rectangle {
                 width: stackView.width
                 height: stackView.height
-
                 color: "red"
 
                 property string itemName: "Page Red"
