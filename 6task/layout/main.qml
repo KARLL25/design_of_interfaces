@@ -3,53 +3,23 @@ import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 
 ApplicationWindow {
-    visible: true
     width: 400
     height: 600
-    title: "Page Switching Example"
-
-    // Header
-    header: ToolBar {
-        id: page_header
-
-        height: 40
-
-
-        Row {
-            spacing: 10
+    visible: true
 
             Button {
                 id: backButton
                 text: "Back"
                 visible: stackView.depth > 1
                 onClicked: stackView.pop()
-
-
+                z: 1
             }
 
-            Label {
-                id: header_page_text
 
-                text: stackView.currentItem ? stackView.currentItem.itemName : "Home"
-                anchors.centerIn: verticalCenter
-            }
-        }
-    }
-
-    // StackView
     StackView {
         id: stackView
-        initialItem: redPage
         anchors.fill: parent
 
-        onCurrentItemChanged: {
-            console.log("StackView Depth:", stackView.depth);
-            backButton.visible = stackView.depth > 1;
-            console.log("Back Button Visibility:", backButton.visible);
-            header_page_text.text = stackView.currentItem ? stackView.currentItem.itemName : "Home";
-        }
-
-        // Страница красного цвета
         Component {
             id: redPage
             Rectangle {
@@ -72,23 +42,21 @@ ApplicationWindow {
 
                     Button {
                         text: "Green"
-                        onClicked: stackView.push(greenPage)
+                        onClicked: stackView.push(greenPage.createObject())
                     }
                     Button {
                         text: "Yellow"
-                        onClicked: stackView.push(yellowPage)
+                        onClicked: stackView.push(yellowPage.createObject())
                     }
                 }
             }
         }
 
-        // Страница зеленого цвета
         Component {
             id: greenPage
             Rectangle {
                 width: stackView.width
                 height: stackView.height
-
                 color: "green"
 
                 property string itemName: "Page Green"
@@ -106,23 +74,21 @@ ApplicationWindow {
 
                     Button {
                         text: "Red"
-                        onClicked: stackView.push(redPage)
+                        onClicked: stackView.push(redPage.createObject())
                     }
                     Button {
                         text: "Yellow"
-                        onClicked: stackView.push(yellowPage)
+                        onClicked: stackView.push(yellowPage.createObject())
                     }
                 }
             }
         }
 
-        // Страница желтого цвета
         Component {
             id: yellowPage
             Rectangle {
                 width: stackView.width
                 height: stackView.height
-
                 color: "yellow"
 
                 property string itemName: "Page Yellow"
@@ -140,14 +106,20 @@ ApplicationWindow {
 
                     Button {
                         text: "Red"
-                        onClicked: stackView.push(redPage)
+                        onClicked: stackView.push(redPage.createObject())
                     }
                     Button {
                         text: "Green"
-                        onClicked: stackView.push(greenPage)
+                        onClicked: stackView.push(greenPage.createObject())
                     }
                 }
             }
+        }
+
+        initialItem: redPage
+        onCurrentItemChanged: {
+            backButton.visible = stackView.depth > 1;
+            header_page_text.text = stackView.currentItem ? stackView.currentItem.itemName : "Home";
         }
     }
 }
