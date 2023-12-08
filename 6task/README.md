@@ -7,5 +7,5 @@
 ![Alt text](images/3.jpg)
 # Добавление кнопки "Назад"
 ## При переходе на другие страницы появляется возможность вернуться на предыдущую страницу
-![Alt text](images/4.png)
-![Alt text](images/5.png)
+![Alt text](images/green_b.png)
+![Alt text](images/yellow_b.png)
